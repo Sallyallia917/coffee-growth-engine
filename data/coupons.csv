@@ -1,0 +1,4 @@
+coupon_id,coupon_name,min_spend,discount,budget,valid_days
+C001,满100减10,100,10,300,7
+C002,满200减25,200,25,500,7
+C003,满50减5,50,5,150,3
