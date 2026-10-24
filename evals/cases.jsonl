@@ -1,8 +1,8 @@
-{"case_id":"EVAL-001","category":"normal","description":"常规复购活动，会员、商品与优惠券均有效","expected":"business_rules_pass"}
-{"case_id":"EVAL-002","category":"audience_edge","description":"没有同意营销的会员，不应进入目标受众","expected":"audience_count_consistent"}
-{"case_id":"EVAL-003","category":"budget_boundary","description":"有效优惠券的预计成本不得超过有效预算上限","expected":"valid_coupon_budget"}
-{"case_id":"EVAL-004","category":"invalid_product","description":"方案不得引用业务上下文中不存在的商品编号","expected":"product_references_fail"}
-{"case_id":"EVAL-005","category":"invalid_coupon","description":"方案不得选择未通过规则校验的优惠券","expected":"coupon_references_fail"}
-{"case_id":"EVAL-006","category":"coupon_product_mismatch","description":"所选优惠券必须至少适用于方案中的一个商品","expected":"coupon_product_compatibility_fail"}
-{"case_id":"EVAL-007","category":"schema_failure","description":"模型输出缺少必需字段时应评测失败","expected":"plan_schema_fail"}
-{"case_id":"EVAL-008","category":"api_failure","description":"模型 API 失败时记录失败状态，不将其视为通过","expected":"run_needs_review"}
+{"case_id":"EVAL-001","category":"normal","description":"常规业务上下文和方案应通过规则评测","evaluator":"business_and_plan","expected_pass":true}
+{"case_id":"EVAL-002","category":"audience_edge","description":"目标会员计数与会员明细不一致时应失败","evaluator":"audience_count_mismatch","expected_pass":false}
+{"case_id":"EVAL-003","category":"budget_boundary","description":"有效优惠券成本超过预算时应失败","evaluator":"coupon_over_budget","expected_pass":false}
+{"case_id":"EVAL-004","category":"invalid_product","description":"方案引用未知商品编号时应失败","evaluator":"invalid_product","expected_pass":false}
+{"case_id":"EVAL-005","category":"invalid_coupon","description":"方案选择未通过规则校验的优惠券时应失败","evaluator":"invalid_coupon","expected_pass":false}
+{"case_id":"EVAL-006","category":"coupon_product_mismatch","description":"优惠券与方案商品不匹配时应失败","evaluator":"coupon_product_mismatch","expected_pass":false}
+{"case_id":"EVAL-007","category":"schema_failure","description":"方案缺少必需字段时应失败","evaluator":"schema_failure","expected_pass":false}
+{"case_id":"EVAL-008","category":"api_failure","description":"模型调用失败的运行记录应标记为待检查","evaluator":"api_failure","expected_pass":false}
