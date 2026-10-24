@@ -1,0 +1,8 @@
+{"case_id":"EVAL-001","category":"normal","description":"常规复购活动，会员、商品与优惠券均有效","expected":"business_rules_pass"}
+{"case_id":"EVAL-002","category":"audience_edge","description":"没有同意营销的会员，不应进入目标受众","expected":"audience_count_consistent"}
+{"case_id":"EVAL-003","category":"budget_boundary","description":"有效优惠券的预计成本不得超过有效预算上限","expected":"valid_coupon_budget"}
+{"case_id":"EVAL-004","category":"invalid_product","description":"方案不得引用业务上下文中不存在的商品编号","expected":"product_references_fail"}
+{"case_id":"EVAL-005","category":"invalid_coupon","description":"方案不得选择未通过规则校验的优惠券","expected":"coupon_references_fail"}
+{"case_id":"EVAL-006","category":"coupon_product_mismatch","description":"所选优惠券必须至少适用于方案中的一个商品","expected":"coupon_product_compatibility_fail"}
+{"case_id":"EVAL-007","category":"schema_failure","description":"模型输出缺少必需字段时应评测失败","expected":"plan_schema_fail"}
+{"case_id":"EVAL-008","category":"api_failure","description":"模型 API 失败时记录失败状态，不将其视为通过","expected":"run_needs_review"}
