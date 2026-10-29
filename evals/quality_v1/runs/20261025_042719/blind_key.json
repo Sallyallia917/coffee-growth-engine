@@ -1,0 +1,26 @@
+{
+  "BL-0CAC2610": {
+    "case_id": "C01",
+    "arm": "A"
+  },
+  "BL-51C3C306": {
+    "case_id": "C01",
+    "arm": "B"
+  },
+  "BL-92D437AC": {
+    "case_id": "C09",
+    "arm": "A"
+  },
+  "BL-26E9FE29": {
+    "case_id": "C09",
+    "arm": "B"
+  },
+  "BL-8AE4B869": {
+    "case_id": "C13",
+    "arm": "A"
+  },
+  "BL-2149F3DC": {
+    "case_id": "C13",
+    "arm": "B"
+  }
+}

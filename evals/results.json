@@ -1,0 +1,404 @@
+{
+  "suite": "coffee-growth-engine-offline-eval-v1",
+  "generated_at_utc": "2026-10-24T07:16:19.077252+00:00",
+  "evaluation_mode": "offline_fixture_no_live_llm",
+  "summary": {
+    "total_cases": 8,
+    "passed_cases": 8,
+    "failed_cases": 0,
+    "pass_rate": 1.0
+  },
+  "cases": [
+    {
+      "case_id": "EVAL-001",
+      "category": "normal",
+      "description": "常规业务上下文和方案应通过规则评测",
+      "expected_pass": true,
+      "actual_pass": true,
+      "case_passed": true,
+      "details": {
+        "business_rules": {
+          "passed": true,
+          "passed_checks": 6,
+          "total_checks": 6,
+          "checks": [
+            {
+              "name": "context_schema",
+              "passed": true,
+              "detail": "业务上下文包含必需字段"
+            },
+            {
+              "name": "context_types",
+              "passed": true,
+              "detail": "活动、受众、推荐和优惠券结构类型有效"
+            },
+            {
+              "name": "audience_count_consistency",
+              "passed": true,
+              "detail": "目标会员人数与会员明细一致"
+            },
+            {
+              "name": "recommendation_audience_consistency",
+              "passed": true,
+              "detail": "推荐对象均来自目标会员且没有重复"
+            },
+            {
+              "name": "valid_coupon_budget",
+              "passed": true,
+              "detail": "所有有效优惠券均未超过有效预算"
+            },
+            {
+              "name": "valid_coupon_has_no_errors",
+              "passed": true,
+              "detail": "有效优惠券没有遗留校验错误"
+            }
+          ]
+        },
+        "marketing_plan": {
+          "passed": true,
+          "passed_checks": 6,
+          "total_checks": 6,
+          "checks": [
+            {
+              "name": "plan_schema",
+              "passed": true,
+              "detail": "营销方案字段符合约定结构"
+            },
+            {
+              "name": "required_text_fields",
+              "passed": true,
+              "detail": "标题、策略和文案均为非空文本"
+            },
+            {
+              "name": "list_fields",
+              "passed": true,
+              "detail": "渠道、商品、优惠券和合规说明均为列表"
+            },
+            {
+              "name": "product_references",
+              "passed": true,
+              "detail": "方案商品均来自业务推荐结果且无重复"
+            },
+            {
+              "name": "coupon_references",
+              "passed": true,
+              "detail": "方案优惠券均通过业务规则校验且无重复"
+            },
+            {
+              "name": "coupon_product_compatibility",
+              "passed": true,
+              "detail": "所选优惠券至少适用于一个所选商品"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL-002",
+      "category": "audience_edge",
+      "description": "目标会员计数与会员明细不一致时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 5,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "context_schema",
+            "passed": true,
+            "detail": "业务上下文包含必需字段"
+          },
+          {
+            "name": "context_types",
+            "passed": true,
+            "detail": "活动、受众、推荐和优惠券结构类型有效"
+          },
+          {
+            "name": "audience_count_consistency",
+            "passed": false,
+            "detail": "目标会员人数与会员明细不一致"
+          },
+          {
+            "name": "recommendation_audience_consistency",
+            "passed": true,
+            "detail": "推荐对象均来自目标会员且没有重复"
+          },
+          {
+            "name": "valid_coupon_budget",
+            "passed": true,
+            "detail": "所有有效优惠券均未超过有效预算"
+          },
+          {
+            "name": "valid_coupon_has_no_errors",
+            "passed": true,
+            "detail": "有效优惠券没有遗留校验错误"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-003",
+      "category": "budget_boundary",
+      "description": "有效优惠券成本超过预算时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 5,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "context_schema",
+            "passed": true,
+            "detail": "业务上下文包含必需字段"
+          },
+          {
+            "name": "context_types",
+            "passed": true,
+            "detail": "活动、受众、推荐和优惠券结构类型有效"
+          },
+          {
+            "name": "audience_count_consistency",
+            "passed": true,
+            "detail": "目标会员人数与会员明细一致"
+          },
+          {
+            "name": "recommendation_audience_consistency",
+            "passed": true,
+            "detail": "推荐对象均来自目标会员且没有重复"
+          },
+          {
+            "name": "valid_coupon_budget",
+            "passed": false,
+            "detail": "有效优惠券预算校验异常：C001"
+          },
+          {
+            "name": "valid_coupon_has_no_errors",
+            "passed": true,
+            "detail": "有效优惠券没有遗留校验错误"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-004",
+      "category": "invalid_product",
+      "description": "方案引用未知商品编号时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 4,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": true,
+            "detail": "营销方案字段符合约定结构"
+          },
+          {
+            "name": "required_text_fields",
+            "passed": true,
+            "detail": "标题、策略和文案均为非空文本"
+          },
+          {
+            "name": "list_fields",
+            "passed": true,
+            "detail": "渠道、商品、优惠券和合规说明均为列表"
+          },
+          {
+            "name": "product_references",
+            "passed": false,
+            "detail": "方案包含未知或重复商品编号"
+          },
+          {
+            "name": "coupon_references",
+            "passed": true,
+            "detail": "方案优惠券均通过业务规则校验且无重复"
+          },
+          {
+            "name": "coupon_product_compatibility",
+            "passed": false,
+            "detail": "所选优惠券与方案商品不匹配"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-005",
+      "category": "invalid_coupon",
+      "description": "方案选择未通过规则校验的优惠券时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 4,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": true,
+            "detail": "营销方案字段符合约定结构"
+          },
+          {
+            "name": "required_text_fields",
+            "passed": true,
+            "detail": "标题、策略和文案均为非空文本"
+          },
+          {
+            "name": "list_fields",
+            "passed": true,
+            "detail": "渠道、商品、优惠券和合规说明均为列表"
+          },
+          {
+            "name": "product_references",
+            "passed": true,
+            "detail": "方案商品均来自业务推荐结果且无重复"
+          },
+          {
+            "name": "coupon_references",
+            "passed": false,
+            "detail": "方案包含未通过校验或未知的优惠券编号"
+          },
+          {
+            "name": "coupon_product_compatibility",
+            "passed": false,
+            "detail": "所选优惠券与方案商品不匹配"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-006",
+      "category": "coupon_product_mismatch",
+      "description": "优惠券与方案商品不匹配时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 5,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": true,
+            "detail": "营销方案字段符合约定结构"
+          },
+          {
+            "name": "required_text_fields",
+            "passed": true,
+            "detail": "标题、策略和文案均为非空文本"
+          },
+          {
+            "name": "list_fields",
+            "passed": true,
+            "detail": "渠道、商品、优惠券和合规说明均为列表"
+          },
+          {
+            "name": "product_references",
+            "passed": true,
+            "detail": "方案商品均来自业务推荐结果且无重复"
+          },
+          {
+            "name": "coupon_references",
+            "passed": true,
+            "detail": "方案优惠券均通过业务规则校验且无重复"
+          },
+          {
+            "name": "coupon_product_compatibility",
+            "passed": false,
+            "detail": "所选优惠券与方案商品不匹配"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-007",
+      "category": "schema_failure",
+      "description": "方案缺少必需字段时应失败",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "passed": false,
+        "passed_checks": 0,
+        "total_checks": 1,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": false,
+            "detail": "字段缺失、多余或响应不是对象"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "EVAL-008",
+      "category": "api_failure",
+      "description": "模型调用失败的运行记录应标记为待检查",
+      "expected_pass": false,
+      "actual_pass": false,
+      "case_passed": true,
+      "details": {
+        "run_id": "EVAL-008",
+        "status": "needs_review",
+        "latency_ms": null,
+        "business_rules": {
+          "passed": true,
+          "passed_checks": 6,
+          "total_checks": 6,
+          "checks": [
+            {
+              "name": "context_schema",
+              "passed": true,
+              "detail": "业务上下文包含必需字段"
+            },
+            {
+              "name": "context_types",
+              "passed": true,
+              "detail": "活动、受众、推荐和优惠券结构类型有效"
+            },
+            {
+              "name": "audience_count_consistency",
+              "passed": true,
+              "detail": "目标会员人数与会员明细一致"
+            },
+            {
+              "name": "recommendation_audience_consistency",
+              "passed": true,
+              "detail": "推荐对象均来自目标会员且没有重复"
+            },
+            {
+              "name": "valid_coupon_budget",
+              "passed": true,
+              "detail": "所有有效优惠券均未超过有效预算"
+            },
+            {
+              "name": "valid_coupon_has_no_errors",
+              "passed": true,
+              "detail": "有效优惠券没有遗留校验错误"
+            }
+          ]
+        },
+        "marketing_plan": {
+          "passed": false,
+          "passed_checks": 0,
+          "total_checks": 1,
+          "checks": [
+            {
+              "name": "plan_available",
+              "passed": false,
+              "detail": "simulated API failure"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
