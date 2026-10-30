@@ -1,0 +1,143 @@
+{
+  "context": {
+    "goal": "提升复购",
+    "budget": 100,
+    "target_segment": "活跃会员"
+  },
+  "results": [
+    {
+      "baseline": "template",
+      "latency_seconds": 0.0,
+      "evaluation": {
+        "passed": true,
+        "passed_checks": 6,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": true,
+            "detail": "营销方案字段符合约定结构"
+          },
+          {
+            "name": "required_text_fields",
+            "passed": true,
+            "detail": "标题、策略和文案均为非空文本"
+          },
+          {
+            "name": "list_fields",
+            "passed": true,
+            "detail": "渠道、商品、优惠券和合规说明均为列表"
+          },
+          {
+            "name": "product_references",
+            "passed": true,
+            "detail": "方案商品均来自业务推荐结果且无重复"
+          },
+          {
+            "name": "coupon_references",
+            "passed": true,
+            "detail": "方案优惠券均通过业务规则校验且无重复"
+          },
+          {
+            "name": "coupon_product_compatibility",
+            "passed": true,
+            "detail": "所选优惠券至少适用于一个所选商品"
+          }
+        ]
+      },
+      "plan": {
+        "campaign_title": "活跃会员复购专享",
+        "strategy": "向活跃会员推荐拼配咖啡豆，搭配已校验的优惠券。",
+        "copywriting": "感谢您的支持！选购拼配咖啡豆，可使用满100减10优惠券。",
+        "channels": [
+          {
+            "channel": "站内信",
+            "message": "活跃会员专享：拼配咖啡豆推荐给您，欢迎再次选购。"
+          }
+        ],
+        "recommended_product_ids": [
+          "P001"
+        ],
+        "selected_coupon_ids": [
+          "C001"
+        ],
+        "compliance_notes": [
+          "商品和优惠券均来自已校验的业务数据。"
+        ]
+      }
+    },
+    {
+      "baseline": "deepseek",
+      "latency_seconds": 4.653,
+      "evaluation": {
+        "passed": true,
+        "passed_checks": 6,
+        "total_checks": 6,
+        "checks": [
+          {
+            "name": "plan_schema",
+            "passed": true,
+            "detail": "营销方案字段符合约定结构"
+          },
+          {
+            "name": "required_text_fields",
+            "passed": true,
+            "detail": "标题、策略和文案均为非空文本"
+          },
+          {
+            "name": "list_fields",
+            "passed": true,
+            "detail": "渠道、商品、优惠券和合规说明均为列表"
+          },
+          {
+            "name": "product_references",
+            "passed": true,
+            "detail": "方案商品均来自业务推荐结果且无重复"
+          },
+          {
+            "name": "coupon_references",
+            "passed": true,
+            "detail": "方案优惠券均通过业务规则校验且无重复"
+          },
+          {
+            "name": "coupon_product_compatibility",
+            "passed": true,
+            "detail": "所选优惠券至少适用于一个所选商品"
+          }
+        ]
+      },
+      "plan": {
+        "campaign_title": "活跃会员复购唤醒计划",
+        "strategy": "面向活跃会员，围绕拼配咖啡豆进行复购提醒与会员专享内容触达，引导会员再次选择常购商品；全程仅使用已校验通过的优惠券，不涉及任何未授权数值或效果承诺。",
+        "copywriting": "亲爱的活跃会员，感谢一路相伴。为您推荐熟悉的拼配咖啡豆，欢迎再次选购。使用已校验通过的满100减10优惠券，可在本活动适用商品中享受对应优惠，具体以结算页面展示为准。",
+        "channels": [
+          {
+            "channel": "会员站内信",
+            "message": "亲爱的活跃会员，为您推荐拼配咖啡豆，欢迎再次选购；本活动可使用满100减10优惠券，具体以结算页面为准。"
+          },
+          {
+            "channel": "短信",
+            "message": "活跃会员专享：拼配咖啡豆复购推荐，可使用满100减10优惠券，具体以结算页面为准。"
+          }
+        ],
+        "recommended_product_ids": [
+          "P001"
+        ],
+        "selected_coupon_ids": [
+          "C001"
+        ],
+        "compliance_notes": [
+          "文案仅原样引用已选择的商品名称“拼配咖啡豆”与优惠券完整名称“满100减10”，未新增或改写任何价格、数量、优惠金额、期限或比例等数字主张。",
+          "未提及分群人数、预算、核销估算等内部决策数值，也未作任何效果承诺或资格承诺。",
+          "所选优惠券为已校验且适用于推荐商品的优惠券，未宣传任何无效优惠券。"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "仅使用一份合成业务上下文，不能代表整体效果。",
+    "规则评测通过不等于营销文案质量更高。",
+    "未测量真实转化率、复购率或ROI。",
+    "单次响应耗时不代表稳定性能。"
+  ]
+}

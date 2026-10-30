@@ -1,0 +1,13 @@
+{
+  "run_id": "20261025_042719",
+  "cases": [
+    "C01",
+    "C09",
+    "C13"
+  ],
+  "planned_outputs": 6,
+  "actual_outputs": 6,
+  "errors": 0,
+  "structurally_valid_plans": 6,
+  "note": "This is a three-case pilot using local sample data. It is not evidence of real-world conversion uplift."
+}
